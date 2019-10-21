@@ -30,7 +30,8 @@ func main(){
 	for i, p := range problem{
 		fmt.Printf("Problem #%d: %s = \n", i+1, p.q)
 		answerCh := make(chan string)
-		go func() {var answer string
+		go func() {
+			var answer string
 			fmt.Scanf("%s\n",&answer)
 			answerCh<-answer
 		}()
@@ -40,11 +41,9 @@ func main(){
 				fmt.Printf("\nYou scored %d out of %d", correct, len(problem))
 				return
 
-			case answer:= <- answerCh:
-			if answer == p.a {
-				correct++
-			} else {
-				fmt.Println("Wrong answer!")
+				case answer:= <- answerCh:
+				if answer == p.a {
+					correct++
 			}
 		}
 	}
